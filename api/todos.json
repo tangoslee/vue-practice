@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "text": "Study Vue",
+    "done": false
+  },
+  {
+    "id": 2,
+    "text": "Study Vue Install",
+    "done": true
+  },
+  {
+    "id": 3,
+    "text": "Study Service",
+    "done": false
+  },
+  {
+    "id": 4,
+    "text": "Study Store",
+    "done": false
+  },
+  {
+    "id": 5,
+    "text": "Study API",
+    "done": false
+  }
+]
