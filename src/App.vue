@@ -5,7 +5,7 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/todo">Todo</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -13,7 +13,8 @@
 @import url(../node_modules/bootstrap/dist/css/bootstrap.min.css);
 @import url(../node_modules/font-awesome/css/font-awesome.min.css);
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
