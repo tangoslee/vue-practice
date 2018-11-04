@@ -7,15 +7,16 @@ const state = {
 
 // getters
 const getters = {
-  closeTodoCount: ({ todos }, gettters) => {
+  // closeTodoCount: ({ todos }, gettters) => {
+  closeTodoCount: ({ todos }) => {
     return todos.filter(todo => todo.done === true).length;
   },
 
-  openTodoCount: ({ todos }, gettters) => {
+  openTodoCount: ({ todos }) => {
     return todos.filter(todo => todo.done !== true).length;
   },
 
-  getAllTodos: (state, getters) => () => {
+  getAllTodos: state => () => {
     const { todos } = state;
     return todos;
   }
@@ -23,14 +24,16 @@ const getters = {
 
 // actions
 const actions = {
-  getAllTodos({ commit }, payload = null) {
+  getAllTodos({ commit }) {
     todoService
       .getTodos()
       .then(todos => {
         commit("GET_ALL_TODOS", todos);
       })
       .catch(error => {
-        console.error({ error });
+        console.error({
+          error
+        });
       });
   },
 
@@ -50,7 +53,10 @@ const actions = {
 // mutations
 const mutations = {
   GET_ALL_TODOS(state, payload) {
-    state.todos = [...state.todos, ...payload];
+    state.todos = [...state.todos, ...payload].reduce((distinct, todo) => {
+      const found = distinct.filter(item => item.id === todo.id);
+      return found && found.length > 0 ? distinct : [...distinct, todo];
+    }, []);
   },
 
   ADD_TODO(state, payload) {
